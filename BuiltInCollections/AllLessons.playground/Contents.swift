@@ -224,8 +224,40 @@ let result = suits.flatMap { suit in
 print(result)
 
 
+//forEach
+
+for element in [1,2,3] {
+    print(element)
+}
+
+[1,2,3].forEach { element in
+    print(element)
+}
+
+// Does the same thing but "forEach “can be handy if the action you want to perform is a single function call on each element in a collection”
+
+// Using return in a forEach gets weird, doesn't actually return out of the loop
+(1..<10).forEach { number in
+    print(number)
+    if number > 2 { return }
+}
 
 
+//Array Types - Slices
+
+// Getting a few items from an array view subscript will return a slice
+
+let fibs2 = [0,1,1,2,3,5]
+let slice = fibs2[1..<fibs.endIndex]
+print(slice)
+type(of: slice)
+
+
+// ArraySlice is a view on array. It is backed by the original array.
+// This makes certain that the array doesn't need to get copied
+
+// Reconstructing back a slice back in to an array
+let reconstructed = Array(slice)
 
 
 
