@@ -40,7 +40,7 @@ for x in arr1.dropFirst() {
     print(x)
 }
 
-// iterate over all but the las5 elements
+// iterate over all but the last 5 elements
 for x in arr1.dropLast(5) {
     print(x)
 }
