@@ -54,4 +54,18 @@ for case nil in maybeInts {
 // func ~=<T, U>(_: T, _: U) -> Bool { return true } makes every case statement return true
 
 
+//Defered intialization.
+extension String {
+    var fileExtension: String? {
+        guard let period = index(of: ".") else {
+            return nil
+        }
+        let extensionRange = index(after: period)..<endIndex
+        return String(self[extensionRange])
+    }
+}
 
+//Never - The return type of functions that do not return normally, that is, a type with no values.
+/*
+ “Never is what’s called an uninhabited type. It’s a type that has no valid values and thus can’t be constructed. Its only purpose is its signaling role for the compiler. A function declared to return an uninhabited type can never return normally.”
+*/
