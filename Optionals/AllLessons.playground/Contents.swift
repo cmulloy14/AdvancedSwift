@@ -69,3 +69,55 @@ extension String {
 /*
  “Never is what’s called an uninhabited type. It’s a type that has no valid values and thus can’t be constructed. Its only purpose is its signaling role for the compiler. A function declared to return an uninhabited type can never return normally.”
 */
+
+
+var dictWithNils: [String: Int?] = [
+    "one": 1,
+    "two": 2,
+    "none": nil
+]
+
+//Setting the dict value with this optional ? actually sets the value to nil.
+dictWithNils["two"]? = nil
+print(dictWithNils)
+
+//Setting the dict value without this optional ? will remove the key and value completely
+dictWithNils["two"] = nil
+print(dictWithNils)
+
+
+//* Optionals have an == operator, but they do not conform to the equatable protocol
+
+let a: [Int?] = [1, 2, nil]
+let b: [Int?] = [1, 2, nil]
+
+//So a == b will throw an error, because == for arrays requires that the elements be equatable
+
+//Switch Case Matching for Optionals
+//Optionals can't be checked in a case statement, because Optionals is not equatable
+
+//Switch Case matching for optionals
+func ~=<T: Equatable>(pattern: T?, value: T?) -> Bool {
+    return pattern == value
+}
+
+//Match range
+func ~=<Bound>(pattern: Range<Bound>, value: Bound?) -> Bool {
+    return value.map { pattern.contains($0) } ?? false
+}
+
+for i in ["2", "foo", "42", "100"] {
+    switch Int(i) {
+    case 42:
+        print("The meaning of life")
+    case 0..<10:
+        print("A single digit")
+    case nil:
+        print("Not a number")
+    default:
+        print("A mystery number")
+    }
+}
+
+
+
